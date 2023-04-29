@@ -4,6 +4,7 @@ package grupo.poopousada;
  *
  * @author Nathazin & Juju
  */
+/*
 import java.io.*;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -70,3 +71,4 @@ public class GerenciadorPousada {
         }
     }
 }
+*/

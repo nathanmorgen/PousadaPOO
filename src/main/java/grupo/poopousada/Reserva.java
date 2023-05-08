@@ -69,7 +69,6 @@ public class Reserva extends GerenciadorArquivos {
     }
 
     public void consultarReservasPorHospede() {
-        scanner.nextLine();
         System.out.print("Digite o nome do hóspede: ");
         String nomeHospede = scanner.nextLine();
         List<String> reservas = obterReservasPorHospede(nomeHospede);

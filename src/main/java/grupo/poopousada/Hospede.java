@@ -28,7 +28,6 @@ public class Hospede extends GerenciadorArquivos {
 
     
     public void cadastrarHospede() {
-        scanner.nextLine();
         System.out.print("Digite o nome do hóspede: ");
         String nome = scanner.nextLine();
         System.out.print("Digite o CPF do hóspede: ");

@@ -96,4 +96,5 @@ public class Quarto extends GerenciadorArquivos {
         System.out.println("Quarto cadastrado com sucesso!");
     }
 
+
 }   

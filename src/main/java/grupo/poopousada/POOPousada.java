@@ -8,72 +8,53 @@ public class POOPousada {
 
     private static Scanner scanner = new Scanner(System.in);
     private static Hospede hospede = new Hospede("hospedes.txt");
-    private static Quarto quarto = new Quarto("quartos.txt", 0, 0, 0);
+    private static Quarto quarto = new Quarto("quartos.txt");
     private static Reserva reserva = new Reserva("reservas.txt");
-
+    private static int opcao = 0;
     public static void main(String[] args) {
-        int opcao = 0;
-
         do {
-            System.out.println("========== POOPOUSADA2 ==========");
-            System.out.println("1 - Cadastrar hóspede");
-            System.out.println("2 - Cadastrar quarto");
-            System.out.println("3 - Fazer reserva");
-            System.out.println("4 - Consultar reservas por hóspede");
-            System.out.println("5 - Consultar reservas por quarto");
-            System.out.println("6 - Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-
-            switch (opcao) {
-                case 1:
-                    cadastrarHospede();
-                    break;
-                case 2:
-                    cadastrarQuarto();
-                    break;
-                case 3:
-                    fazerReserva();
-                    break;
-                case 4:
-                    consultarReservasPorHospede();
-                    break;
-                case 5:
-                    consultarReservasPorQuarto();
-                    break;
-                case 6:
-                    System.out.println("Encerrando o programa...");
-                    break;
-                default:
-                    System.out.println("Opção inválida! Tente novamente.");
-            }
-
+            menu();
         } while (opcao != 6);
     }
 
-    private static void cadastrarHospede() {
-        scanner.nextLine();
-        System.out.print("Digite o nome do hóspede: ");
-        String nome = scanner.nextLine();
-        System.out.print("Digite o CPF do hóspede: ");
-        String cpf = scanner.nextLine();
-        System.out.print("Digite o telefone do hóspede: ");
-        String telefone = scanner.nextLine();
-        hospede.criarHospede(nome, cpf, telefone);
-        System.out.println("Hóspede cadastrado com sucesso!");
+    private static void menu(){
+        System.out.println("========== POOPOUSADA2 ==========");
+        System.out.println("1 - Cadastrar hóspede");
+        System.out.println("2 - Cadastrar quarto");
+        System.out.println("3 - Fazer reserva");
+        System.out.println("4 - Consultar reservas por hóspede");
+        System.out.println("5 - Consultar reservas por quarto");
+        System.out.println("6 - Sair");
+        System.out.print("Escolha uma opção: ");
+       
+        opcao = scanner.nextInt();
+        switch (opcao) {
+            case 1:
+                hospede.cadastrarHospede();
+                break;
+            case 2:
+                quarto.cadastrarQuarto();
+                break;
+            case 3:
+                fazerReserva();
+                break;
+            case 4:
+                consultarReservasPorHospede();
+                break;
+            case 5:
+                consultarReservasPorQuarto();
+                break;
+            case 6:
+                System.out.println("Encerrando o programa...");
+                break;
+            default:
+                System.out.println("Opção inválida! Tente novamente.");
+        }
     }
 
-    private static void cadastrarQuarto() {
-        System.out.print("Digite o número do quarto: ");
-        int numero = scanner.nextInt();
-        System.out.print("Digite a capacidade do quarto: ");
-        int capacidade = scanner.nextInt();
-        System.out.print("Digite o valor da diária: ");
-        double valorDiaria = scanner.nextDouble();
-        quarto = new Quarto("quartos.txt", numero, capacidade, valorDiaria);
-        quarto.criarQuarto();
-        System.out.println("Quarto cadastrado com sucesso!");
-    }
+
+
+    
 
     private static void fazerReserva() {
         scanner.nextLine();

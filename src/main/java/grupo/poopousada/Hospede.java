@@ -8,14 +8,14 @@ package grupo.poopousada;
 import java.util.*;
 
 public class Hospede extends GerenciadorArquivos {
-
+    private static Scanner scanner = new Scanner(System.in);
     // Construtor da classe Hospede
     public Hospede(String nomeArquivo) {
         super(nomeArquivo);
     }
 
     // Método para criar um novo hóspede
-    public void criarHospede(String nome, String cpf, String telefone) {
+    private void criarHospede(String nome, String cpf, String telefone) {
         // Carrega os dados já existentes do arquivo
         List<String> dados = carregarDados();
         // Cria uma nova linha para o hóspede
@@ -25,5 +25,17 @@ public class Hospede extends GerenciadorArquivos {
         // Salva os dados atualizados no arquivo
         salvarDados(dados);
     }
+
     
+    public void cadastrarHospede() {
+        scanner.nextLine();
+        System.out.print("Digite o nome do hóspede: ");
+        String nome = scanner.nextLine();
+        System.out.print("Digite o CPF do hóspede: ");
+        String cpf = scanner.nextLine();
+        System.out.print("Digite o telefone do hóspede: ");
+        String telefone = scanner.nextLine();
+        criarHospede(nome, cpf, telefone);
+        System.out.println("Hóspede cadastrado com sucesso!");
+    }
 }

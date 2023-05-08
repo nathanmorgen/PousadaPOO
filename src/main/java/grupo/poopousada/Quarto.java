@@ -1,38 +1,20 @@
 package grupo.poopousada;
 
-import java.util.List;
+import java.util.*;
 
 public class Quarto extends GerenciadorArquivos {
+    private static Scanner scanner = new Scanner(System.in);
 
-    private int numero;
-    private int capacidade;
-    private double valorDiaria;
-
-    public Quarto(String nomeArquivo, int numero, int capacidade, double valorDiaria) {
+    public Quarto(String nomeArquivo) {
         super(nomeArquivo);
-        this.numero = numero;
-        this.capacidade = capacidade;
-        this.valorDiaria = valorDiaria;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public int getCapacidade() {
-        return capacidade;
-    }
-
-    public double getValorDiaria() {
-        return valorDiaria;
     }
 
     // Método para criar um novo quarto
-    public void criarQuarto() {
+    public void criarQuarto(int numero, int capacidade, double valorDiaria) {
         // Carrega os dados já existentes do arquivo
         List<String> dados = carregarDados();
         // Cria uma nova linha para o quarto
-        String novaLinha = this.numero + ";" + this.capacidade + ";" + this.valorDiaria;
+        String novaLinha = numero + ";" + capacidade + ";" + valorDiaria;
         // Adiciona a nova linha aos dados já existentes
         dados.add(novaLinha);
         // Salva os dados atualizados no arquivo
@@ -101,6 +83,17 @@ public class Quarto extends GerenciadorArquivos {
         for (String linha : dados) {
             System.out.println(linha);
         }
+    }
+
+    public void cadastrarQuarto() {
+        System.out.print("Digite o número do quarto: ");
+        int numero = scanner.nextInt();
+        System.out.print("Digite a capacidade do quarto: ");
+        int capacidade = scanner.nextInt();
+        System.out.print("Digite o valor da diária: ");
+        double valorDiaria = scanner.nextDouble();
+        criarQuarto(numero,capacidade,valorDiaria);
+        System.out.println("Quarto cadastrado com sucesso!");
     }
 
 }   

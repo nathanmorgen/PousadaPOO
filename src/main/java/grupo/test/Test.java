@@ -7,7 +7,7 @@ import grupo.poopousada.Hospede;
 import grupo.poopousada.Quarto;
 import grupo.poopousada.Reserva;
 
-public class POOPousada {
+public class Test {
     private static Scanner scanner = new Scanner(System.in);
     private static Hospede hospede = new Hospede("hospedes.txt");
     private static Quarto quarto = new Quarto("quartos.txt");

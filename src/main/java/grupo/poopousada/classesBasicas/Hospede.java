@@ -1,4 +1,4 @@
-package grupo.poopousada;
+package grupo.poopousada.classesBasicas;
 
 /**
  *
@@ -6,6 +6,8 @@ package grupo.poopousada;
  */
 
 import java.util.*;
+
+import grupo.poopousada.repositorio.GerenciadorArquivos;
 
 public class Hospede extends GerenciadorArquivos {
     private static Scanner scanner = new Scanner(System.in);

@@ -3,9 +3,9 @@ package grupo.test;
 
 import java.util.Scanner;
 
-import grupo.poopousada.Hospede;
-import grupo.poopousada.Quarto;
-import grupo.poopousada.Reserva;
+import grupo.poopousada.classesBasicas.Hospede;
+import grupo.poopousada.classesBasicas.Quarto;
+import grupo.poopousada.classesBasicas.Reserva;
 
 public class Test {
     private static Scanner scanner = new Scanner(System.in);

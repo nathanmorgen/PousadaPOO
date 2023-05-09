@@ -1,4 +1,4 @@
-package grupo.poopousada;
+package grupo.poopousada.repositorio;
 import java.io.*;
 import java.util.*;
 

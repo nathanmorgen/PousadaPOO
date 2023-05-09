@@ -9,17 +9,6 @@ public class Quarto extends GerenciadorArquivos {
         super(nomeArquivo);
     }
 
-    // Método para criar um novo quarto
-    public void criarQuarto(int numero, int capacidade, double valorDiaria) {
-        // Carrega os dados já existentes do arquivo
-        List<String> dados = carregarDados();
-        // Cria uma nova linha para o quarto
-        String novaLinha = numero + ";" + capacidade + ";" + valorDiaria;
-        // Adiciona a nova linha aos dados já existentes
-        dados.add(novaLinha);
-        // Salva os dados atualizados no arquivo
-        salvarDados(dados);
-    }
 
     // Método para buscar um quarto pelo número
     public String buscarQuarto(int numero) {
@@ -86,13 +75,18 @@ public class Quarto extends GerenciadorArquivos {
     }
 
     public void cadastrarQuarto() {
+        List<String> dados = new ArrayList<String>();
+
         System.out.print("Digite o número do quarto: ");
-        int numero = scanner.nextInt();
+        dados.add(scanner.nextLine());
+
         System.out.print("Digite a capacidade do quarto: ");
-        int capacidade = scanner.nextInt();
+        dados.add(scanner.nextLine());
+
         System.out.print("Digite o valor da diária: ");
-        double valorDiaria = scanner.nextDouble();
-        criarQuarto(numero,capacidade,valorDiaria);
+        dados.add(scanner.nextLine());
+
+        setDados(dados);
         System.out.println("Quarto cadastrado com sucesso!");
     }
 

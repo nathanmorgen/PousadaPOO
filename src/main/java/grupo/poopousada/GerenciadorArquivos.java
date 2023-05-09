@@ -45,4 +45,16 @@ public class GerenciadorArquivos {
         }
         return dados;
     }
+
+    public void setDados(List<String> dados) {
+        List<String> dadosArquivo = carregarDados();
+       
+        String novaLinha = "";
+        for (String dado : dados) {
+                novaLinha += dado + ";";
+        }
+
+        dadosArquivo.add(novaLinha);
+        salvarDados(dadosArquivo);
+    }
 }

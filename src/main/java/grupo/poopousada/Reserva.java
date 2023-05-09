@@ -1,8 +1,6 @@
 package grupo.poopousada;
 
-import java.time.LocalDate;
 import java.util.*;
-
 
 public class Reserva extends GerenciadorArquivos {
     private static Scanner scanner = new Scanner(System.in);
@@ -10,18 +8,6 @@ public class Reserva extends GerenciadorArquivos {
     // Construtor da classe Reserva
     public Reserva(String nomeArquivo) {
         super(nomeArquivo);
-    }
-
-    // Método para criar uma nova reserva
-    private void criarReserva(String nomeHospede, int numQuarto, LocalDate dataInicio, LocalDate dataFim) {
-        // Carrega os dados já existentes do arquivo
-        List<String> dados = carregarDados();
-        // Cria uma nova linha para a reserva
-        String novaLinha = nomeHospede + ";" + numQuarto + ";" + dataInicio + ";" + dataFim;
-        // Adiciona a nova linha aos dados já existentes
-        dados.add(novaLinha);
-        // Salva os dados atualizados no arquivo
-        salvarDados(dados);
     }
 
     // Método para obter todas as reservas de um determinado hóspede
@@ -56,15 +42,21 @@ public class Reserva extends GerenciadorArquivos {
 
     
     public void fazerReserva() {
+        List<String> dados = new ArrayList<String>();
+
         System.out.print("Digite o nome do hóspede: ");
-        String nomeHospede = scanner.nextLine();
+        dados.add(scanner.nextLine());
+
         System.out.print("Digite o número do quarto: ");
-        int numQuarto = scanner.nextInt();
+        dados.add(scanner.nextLine());
+
         System.out.print("Digite a data de início (dd-mm-aaaa): ");
-        LocalDate dataInicio = LocalDate.parse(scanner.next());
+        dados.add(scanner.nextLine());
+
         System.out.print("Digite a data de fim (dd-mm-aaaa): ");
-        LocalDate dataFim = LocalDate.parse(scanner.next());
-        criarReserva(nomeHospede, numQuarto, dataInicio, dataFim);
+        dados.add(scanner.nextLine());
+
+        setDados(dados);
         System.out.println("Reserva realizada com sucesso!");
     }
 

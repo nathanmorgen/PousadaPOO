@@ -89,6 +89,9 @@ public class Quarto extends GerenciadorArquivos {
         System.out.print("Digite o valor da diária: ");
         dados.add(scanner.nextLine());
 
+        //o Quarto esta ocupado
+        dados.add("false");
+        
         salvarDados(dados);
         System.out.println("Quarto cadastrado com sucesso!");
     }

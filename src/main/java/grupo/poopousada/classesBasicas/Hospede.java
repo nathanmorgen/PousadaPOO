@@ -29,7 +29,7 @@ public class Hospede extends GerenciadorArquivos {
         System.out.print("Digite o telefone do hóspede: ");
         dados.add(scanner.nextLine());
 
-        setDados(dados);
+        salvarDados(dados);
         System.out.println("Hóspede cadastrado com sucesso!");
     }
 }

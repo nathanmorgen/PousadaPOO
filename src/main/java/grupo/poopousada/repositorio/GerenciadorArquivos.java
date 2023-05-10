@@ -12,10 +12,18 @@ public abstract class GerenciadorArquivos {
 
     // Método que salva os dados em um arquivo de texto
     public void salvarDados(List<String> dados) {
+        List<String> dadosArquivo = carregarDados();
+
+        String novaLinha = "";
+        for (String dado : dados) {
+                novaLinha += dado + ";";
+        }
+
+        dadosArquivo.add(novaLinha);
         try {
             FileWriter writer = new FileWriter(nomeArquivo);
             // Itera sobre a lista de dados e grava cada elemento em uma linha do arquivo
-            for (String dado : dados) {
+            for (String dado : dadosArquivo) {
                 writer.write(dado + "\n");
             }
             writer.close();
@@ -46,15 +54,4 @@ public abstract class GerenciadorArquivos {
         return dados;
     }
 
-    public void setDados(List<String> dados) {
-        List<String> dadosArquivo = carregarDados();
-       
-        String novaLinha = "";
-        for (String dado : dados) {
-                novaLinha += dado + ";";
-        }
-
-        dadosArquivo.add(novaLinha);
-        salvarDados(dadosArquivo);
-    }
 }

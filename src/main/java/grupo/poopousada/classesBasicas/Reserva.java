@@ -58,7 +58,7 @@ public class Reserva extends GerenciadorArquivos {
         System.out.print("Digite a data de fim (dd-mm-aaaa): ");
         dados.add(scanner.nextLine());
 
-        setDados(dados);
+        salvarDados(dados);
         System.out.println("Reserva realizada com sucesso!");
     }
 

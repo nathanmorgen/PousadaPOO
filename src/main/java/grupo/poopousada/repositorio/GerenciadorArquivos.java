@@ -54,4 +54,6 @@ public abstract class GerenciadorArquivos {
         return dados;
     }
 
+    public abstract void listarDados();
+    //public abstract void excluirDado();
 }

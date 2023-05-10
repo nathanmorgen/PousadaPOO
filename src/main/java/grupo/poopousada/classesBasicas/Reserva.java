@@ -42,6 +42,16 @@ public class Reserva extends GerenciadorArquivos {
         return reservasQuarto;
     }
 
+    public void listarDados() {
+        // Carrega os dados já existentes do arquivo
+        List<String> dados = carregarDados();
+        // Imprime os dados na tela
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+            System.out.println("Nome " + campos[0] + " número do quarto: " + campos[1] + " data de início: " + campos[3] + " data de fim: " + campos[4]);
+        }
+    }
+
     
     public void fazerReserva() {
         List<String> dados = new ArrayList<String>();

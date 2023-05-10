@@ -15,6 +15,19 @@ public class Hospede extends GerenciadorArquivos {
     public Hospede(String nomeArquivo) {
         super(nomeArquivo);
     }
+
+    
+    public void listarDados() {
+        // Carrega os dados já existentes do arquivo
+        List<String> dados = carregarDados();
+        // Imprime os dados na tela
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+            System.out.println("Nome " + campos[0] + " CPF: " + campos[1] + " Telefone: " + campos[3]);
+        }
+    }
+
+
    
     public void cadastrarHospede() {
         List<String> dados = new ArrayList<String>();

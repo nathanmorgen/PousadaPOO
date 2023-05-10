@@ -67,12 +67,13 @@ public class Quarto extends GerenciadorArquivos {
     }
 
     // Método para listar todos os quartos
-    public void listarQuartos() {
+    public void listarDados() {
         // Carrega os dados já existentes do arquivo
         List<String> dados = carregarDados();
         // Imprime os dados na tela
         for (String linha : dados) {
-            System.out.println(linha);
+            String[] campos = linha.split(";");
+            System.out.println("Número: " + campos[0] + " Capacidade: " + campos[1] + " Valor da diária: " + campos[2]);
         }
     }
 

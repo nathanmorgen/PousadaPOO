@@ -92,7 +92,7 @@ public class Test {
                 quarto.listarDados();
                 break;
             case 3:
-                quarto.listaQuartosVagas();
+                quarto.listaQuartosVagos();
                 break;
             case 4:
                 System.out.println("Você tem certeza que quer excluir um quarto? (s/n)");

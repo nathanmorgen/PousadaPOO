@@ -79,7 +79,7 @@ public class Quarto extends GerenciadorArquivos {
         }
     }
 
-    public void listaQuartosVagas(){
+    public void listaQuartosVagos(){
         // Carrega os dados já existentes do arquivo
         List<String> dados = carregarDados();
         // Imprime os dados na tela
@@ -92,7 +92,7 @@ public class Quarto extends GerenciadorArquivos {
         }
     }
 
-    public  List<String> carregarQuartosVagas(){
+    public  List<String> carregarQuartosVagos(){
         List<String> dados = carregarDados();
         List<String> quartosVagas = new ArrayList<>();
         for (String linha : dados) {

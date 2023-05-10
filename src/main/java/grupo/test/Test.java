@@ -8,9 +8,9 @@ import grupo.poopousada.classesBasicas.Reserva;
 
 public class Test {
     private static Scanner scanner = new Scanner(System.in);
-    private static Hospede hospede = new Hospede("hospedes.txt");
-    private static Quarto quarto = new Quarto("quartos.txt");
-    private static Reserva reserva = new Reserva("reservas.txt");
+    private static Hospede hospede = new Hospede("dados/hospedes.txt");
+    private static Quarto quarto = new Quarto("dados/quartos.txt");
+    private static Reserva reserva = new Reserva("dados/reservas.txt");
     private static int opcao = 0;
     public static void main(String[] args) {
         do {

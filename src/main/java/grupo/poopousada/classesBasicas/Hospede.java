@@ -23,7 +23,7 @@ public class Hospede extends GerenciadorArquivos {
         // Imprime os dados na tela
         for (String linha : dados) {
             String[] campos = linha.split(";");
-            System.out.println("Nome " + campos[0] + " CPF: " + campos[1] + " Telefone: " + campos[3]);
+            System.out.println("Nome " + campos[0] + " CPF: " + campos[1] + " Telefone: " + campos[2]);
         }
     }
 

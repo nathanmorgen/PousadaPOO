@@ -2,7 +2,7 @@ package grupo.poopousada.classesBasicas;
 
 import java.util.*;
 
-import org.ietf.jgss.Oid;
+
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
 
@@ -90,6 +90,19 @@ public class Quarto extends GerenciadorArquivos {
                  System.out.println("Número: " + campos[0] + " Capacidade: " + campos[1] + " Valor da diária: " + campos[2]);
             }
         }
+    }
+
+    public  List<String> carregarQuartosVagas(){
+        List<String> dados = carregarDados();
+        List<String> quartosVagas = new ArrayList<>();
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+            boolean boolValue = Boolean.parseBoolean(campos[3]);
+            if (!boolValue){
+                quartosVagas.add(linha);
+            }
+        }
+        return quartosVagas;
     }
     
 

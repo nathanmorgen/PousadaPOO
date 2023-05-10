@@ -2,7 +2,7 @@ package grupo.poopousada.repositorio;
 import java.io.*;
 import java.util.*;
 
-public class GerenciadorArquivos {
+public abstract class GerenciadorArquivos {
     // Atributo que armazena o nome do arquivo a ser usado para salvar os dados
     private String nomeArquivo;
 

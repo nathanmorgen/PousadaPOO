@@ -2,6 +2,8 @@ package grupo.poopousada.classesBasicas;
 
 import java.util.*;
 
+import org.ietf.jgss.Oid;
+
 import grupo.poopousada.repositorio.GerenciadorArquivos;
 
 public class Quarto extends GerenciadorArquivos {
@@ -77,6 +79,20 @@ public class Quarto extends GerenciadorArquivos {
         }
     }
 
+    public void listaQuartosVagas(){
+        // Carrega os dados já existentes do arquivo
+        List<String> dados = carregarDados();
+        // Imprime os dados na tela
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+            boolean boolValue = Boolean.parseBoolean(campos[3]);
+            if (!boolValue){
+                 System.out.println("Número: " + campos[0] + " Capacidade: " + campos[1] + " Valor da diária: " + campos[2]);
+            }
+        }
+    }
+    
+
     public void cadastrarQuarto() {
         List<String> dados = new ArrayList<String>();
 
@@ -91,7 +107,7 @@ public class Quarto extends GerenciadorArquivos {
 
         //o Quarto esta ocupado
         dados.add("false");
-        
+
         salvarDados(dados);
         System.out.println("Quarto cadastrado com sucesso!");
     }

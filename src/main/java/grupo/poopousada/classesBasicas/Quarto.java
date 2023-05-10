@@ -1,43 +1,18 @@
-package grupo.poopousada;
+package grupo.poopousada.classesBasicas;
 
-import java.util.List;
+import java.util.*;
+
+
+
+import grupo.poopousada.repositorio.GerenciadorArquivos;
 
 public class Quarto extends GerenciadorArquivos {
+    private static Scanner scanner = new Scanner(System.in);
 
-    private int numero;
-    private int capacidade;
-    private double valorDiaria;
-
-    public Quarto(String nomeArquivo, int numero, int capacidade, double valorDiaria) {
+    public Quarto(String nomeArquivo) {
         super(nomeArquivo);
-        this.numero = numero;
-        this.capacidade = capacidade;
-        this.valorDiaria = valorDiaria;
     }
 
-    public int getNumero() {
-        return numero;
-    }
-
-    public int getCapacidade() {
-        return capacidade;
-    }
-
-    public double getValorDiaria() {
-        return valorDiaria;
-    }
-
-    // Método para criar um novo quarto
-    public void criarQuarto() {
-        // Carrega os dados já existentes do arquivo
-        List<String> dados = carregarDados();
-        // Cria uma nova linha para o quarto
-        String novaLinha = this.numero + ";" + this.capacidade + ";" + this.valorDiaria;
-        // Adiciona a nova linha aos dados já existentes
-        dados.add(novaLinha);
-        // Salva os dados atualizados no arquivo
-        salvarDados(dados);
-    }
 
     // Método para buscar um quarto pelo número
     public String buscarQuarto(int numero) {
@@ -94,13 +69,61 @@ public class Quarto extends GerenciadorArquivos {
     }
 
     // Método para listar todos os quartos
-    public void listarQuartos() {
+    public void listarDados() {
         // Carrega os dados já existentes do arquivo
         List<String> dados = carregarDados();
         // Imprime os dados na tela
         for (String linha : dados) {
-            System.out.println(linha);
+            String[] campos = linha.split(";");
+            System.out.println("Número: " + campos[0] + " Capacidade: " + campos[1] + " Valor da diária: " + campos[2]);
         }
     }
+
+    public void listaQuartosVagos(){
+        // Carrega os dados já existentes do arquivo
+        List<String> dados = carregarDados();
+        // Imprime os dados na tela
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+            boolean boolValue = Boolean.parseBoolean(campos[3]);
+            if (!boolValue){
+                 System.out.println("Número: " + campos[0] + " Capacidade: " + campos[1] + " Valor da diária: " + campos[2]);
+            }
+        }
+    }
+
+    public  List<String> carregarQuartosVagos(){
+        List<String> dados = carregarDados();
+        List<String> quartosVagas = new ArrayList<>();
+        for (String linha : dados) {
+            String[] campos = linha.split(";");
+            boolean boolValue = Boolean.parseBoolean(campos[3]);
+            if (!boolValue){
+                quartosVagas.add(linha);
+            }
+        }
+        return quartosVagas;
+    }
+    
+
+    public void cadastrarQuarto() {
+        List<String> dados = new ArrayList<String>();
+
+        System.out.print("Digite o número do quarto: ");
+        dados.add(scanner.nextLine());
+
+        System.out.print("Digite a capacidade do quarto: ");
+        dados.add(scanner.nextLine());
+
+        System.out.print("Digite o valor da diária: ");
+        dados.add(scanner.nextLine());
+
+        //o Quarto esta ocupado
+        dados.add("false");
+
+        salvarDados(dados);
+        System.out.println("Quarto cadastrado com sucesso!");
+    }
+
 
 }   

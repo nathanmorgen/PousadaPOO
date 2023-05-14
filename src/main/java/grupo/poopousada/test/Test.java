@@ -1,4 +1,4 @@
-package grupo.test;
+package grupo.poopousada.test;
 
 import java.util.Scanner;
 
@@ -77,9 +77,8 @@ public class Test {
         System.out.println("");
         System.out.println("1 - Cadastrar Quarto");
         System.out.println("2 - Lista todos os Quarto");
-        System.out.println("3 - Lista todos os vagos Quarto");
-        System.out.println("4 - Excluir Quarto");
-        System.out.println("5 - Voltar");
+        System.out.println("3 - Excluir Quarto");
+        System.out.println("4 - Voltar");
         System.out.println("6 - Sair");
         System.out.print("Escolha uma opção: ");
 
@@ -92,9 +91,6 @@ public class Test {
                 quarto.listarDados();
                 break;
             case 3:
-                quarto.listaQuartosVagos();
-                break;
-            case 4:
                 System.out.println("Você tem certeza que quer excluir um quarto? (s/n)");
                 String tex = scanner.nextLine();
                 if(tex.equals("s")){
@@ -103,7 +99,7 @@ public class Test {
                     quarto.excluirQuarto(numero);
                 }
                 break;
-            case 5:
+            case 4:
                 System.out.println("Voltar para menu principal");
                 break;
             case 6:

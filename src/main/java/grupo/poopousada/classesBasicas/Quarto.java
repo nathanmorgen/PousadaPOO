@@ -79,32 +79,7 @@ public class Quarto extends GerenciadorArquivos {
         }
     }
 
-    public void listaQuartosVagos(){
-        // Carrega os dados já existentes do arquivo
-        List<String> dados = carregarDados();
-        // Imprime os dados na tela
-        for (String linha : dados) {
-            String[] campos = linha.split(";");
-            boolean boolValue = Boolean.parseBoolean(campos[3]);
-            if (!boolValue){
-                 System.out.println("Número: " + campos[0] + " Capacidade: " + campos[1] + " Valor da diária: " + campos[2]);
-            }
-        }
-    }
-
-    public  List<String> carregarQuartosVagos(){
-        List<String> dados = carregarDados();
-        List<String> quartosVagas = new ArrayList<>();
-        for (String linha : dados) {
-            String[] campos = linha.split(";");
-            boolean boolValue = Boolean.parseBoolean(campos[3]);
-            if (!boolValue){
-                quartosVagas.add(linha);
-            }
-        }
-        return quartosVagas;
-    }
-    
+   
 
     public void cadastrarQuarto() {
         List<String> dados = new ArrayList<String>();
@@ -117,9 +92,6 @@ public class Quarto extends GerenciadorArquivos {
 
         System.out.print("Digite o valor da diária: ");
         dados.add(scanner.nextLine());
-
-        //o Quarto esta ocupado
-        dados.add("false");
 
         salvarDados(dados);
         System.out.println("Quarto cadastrado com sucesso!");

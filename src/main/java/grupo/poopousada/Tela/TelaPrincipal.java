@@ -1,7 +1,8 @@
 package grupo.poopousada.Tela;
 import java.util.Scanner;
 
-import grupo.Fachada.Fachada;
+import grupo.poopousada.Fachada.Fachada;
+
 
 public class TelaPrincipal {
     private static Fachada fachada = new Fachada(); 

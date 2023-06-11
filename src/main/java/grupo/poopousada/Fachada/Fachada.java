@@ -1,4 +1,4 @@
-package grupo.Fachada;
+package grupo.poopousada.Fachada;
 
 
 import grupo.poopousada.classesBasicas.Hospede;

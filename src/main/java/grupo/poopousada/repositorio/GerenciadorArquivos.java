@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 
 
-public abstract class GerenciadorArquivos {
+public class GerenciadorArquivos {
     // Atributo que armazena o nome do arquivo a ser usado para salvar os dados
     private String nomeArquivo;
 
@@ -55,6 +55,6 @@ public abstract class GerenciadorArquivos {
         return dados;
     }
 
-    public abstract void listarDados();
+    //public abstract void listarDados();
     //public abstract void excluirDado();
 }

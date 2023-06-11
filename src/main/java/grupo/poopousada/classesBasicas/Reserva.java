@@ -59,8 +59,8 @@ public class Reserva extends GerenciadorArquivos {
         System.out.print("Digite o nome do hóspede: ");
         dados.add(scanner.nextLine());
 
-        System.out.print("Digite o número do quarto: ");
-        dados.add(scanner.nextLine());
+        
+        dados.add(verificaNumeroQuarto());
 
         System.out.print("Digite a data de início (dd-mm-aaaa): ");
         dados.add(scanner.nextLine());
@@ -102,5 +102,35 @@ public class Reserva extends GerenciadorArquivos {
             }
         }
     }
+
+    
+    private String verificaNumeroQuarto(){
+        Quarto quartos = new Quarto("dados/quartos.txt");
+        String numeroQuarto;
+        System.out.print("Digite o número do quarto: ");
+        numeroQuarto = scanner.nextLine();
+
+        while(true){
+            try{
+            int num = Integer.parseInt(numeroQuarto);  
+                if (quartos.buscarQuarto(num) == null){
+                    System.out.println("O quarto com o numero " + num + " não existe");
+                    System.out.print("Digite o número do quarto novamente: ");
+                    numeroQuarto = scanner.nextLine();
+                    continue;
+                }
+                break;
+            }catch(NumberFormatException e){
+                System.out.println("O valor digitado não é um numero");
+                System.out.print("Digite o número do quarto novamente: ");
+                numeroQuarto = scanner.nextLine();
+                continue;
+
+            }
+        }
+       
+        return numeroQuarto; 
+    }
+
    
 }

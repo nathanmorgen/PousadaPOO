@@ -27,6 +27,18 @@ public class Hospede extends GerenciadorArquivos {
         }
     }
 
+    private String verificaTelefone(String texto){
+        System.out.print(texto);
+        String numero = scanner.nextLine();
+
+        while (numero.length() != 11) { 
+            System.out.println("O telefone precisa tem 2 digitos para o DD e mais 9 para o numero ");
+            System.out.print(texto);
+            numero = scanner.nextLine();
+        }
+        return numero;
+    }
+
 
    
     public void cadastrarHospede() {
@@ -35,12 +47,11 @@ public class Hospede extends GerenciadorArquivos {
         System.out.print("Digite o nome do hóspede: ");
         dados.add(scanner.nextLine());
     
-
+       
         System.out.print("Digite o CPF do hóspede: ");
-        dados.add(scanner.nextLine());
-
-        System.out.print("Digite o telefone do hóspede: ");
-        dados.add(scanner.nextLine());
+        dados.add(scanner.nextLine()); 
+        
+        dados.add(verificaTelefone("Digite o telefone do hóspede:"));
 
         salvarDados(dados);
         System.out.println("Hóspede cadastrado com sucesso!");

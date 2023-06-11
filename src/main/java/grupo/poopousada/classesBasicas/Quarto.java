@@ -79,13 +79,40 @@ public class Quarto extends GerenciadorArquivos {
         }
     }
 
+    private String verificaNumeroQuarto(){
+        String numeroQuarto;
+        System.out.print("Digite o número do quarto: ");
+        numeroQuarto = scanner.nextLine();
+
+        while(true){
+            try{
+                int num = Integer.parseInt(numeroQuarto);  
+                if (buscarQuarto(num) == null){
+                    break;
+                }
+                System.out.println("O quarto com o numero " + num + " ja existe");
+                System.out.print("Digite o número do quarto novamente: ");
+                numeroQuarto = scanner.nextLine();
+                continue;
+                
+            }catch(NumberFormatException e){
+                System.out.println("O valor digitado não é um numero");
+                System.out.print("Digite o número do quarto novamente: ");
+                numeroQuarto = scanner.nextLine();
+                continue;
+
+            }
+        }
+       
+        return numeroQuarto; 
+    }
+
    
 
     public void cadastrarQuarto() {
         List<String> dados = new ArrayList<String>();
 
-        System.out.print("Digite o número do quarto: ");
-        dados.add(scanner.nextLine());
+        dados.add(verificaNumeroQuarto());
 
         System.out.print("Digite a capacidade do quarto: ");
         dados.add(scanner.nextLine());

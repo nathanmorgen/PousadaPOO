@@ -107,6 +107,27 @@ public class Quarto extends GerenciadorArquivos {
         return numeroQuarto; 
     }
 
+    private String isNumero(String texto){
+        String numero;
+        System.out.print(texto);
+        numero = scanner.nextLine();
+
+        while(true){
+            try{
+                Integer.parseInt(numero);  
+                break;
+                
+            }catch(NumberFormatException e){
+                System.out.println("O valor digitado não é um numero");
+                System.out.print(texto);
+                numero = scanner.nextLine();
+                continue;
+            }
+        }
+
+        return numero; 
+    }
+
    
 
     public void cadastrarQuarto() {
@@ -114,11 +135,9 @@ public class Quarto extends GerenciadorArquivos {
 
         dados.add(verificaNumeroQuarto());
 
-        System.out.print("Digite a capacidade do quarto: ");
-        dados.add(scanner.nextLine());
+        dados.add(isNumero("Digite a capacidade do quarto: "));
 
-        System.out.print("Digite o valor da diária: ");
-        dados.add(scanner.nextLine());
+        dados.add(isNumero("Digite o valor da diária: "));
 
         salvarDados(dados);
         System.out.println("Quarto cadastrado com sucesso!");

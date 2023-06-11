@@ -27,7 +27,7 @@ public class Hospede extends GerenciadorArquivos {
         }
     }
 
-    private String verificaTelefone(String texto){
+    public String verificaTelefone(String texto){
         System.out.print(texto);
         String numero = scanner.nextLine();
 
@@ -37,6 +37,18 @@ public class Hospede extends GerenciadorArquivos {
             numero = scanner.nextLine();
         }
         return numero;
+    }
+
+    public String buscaHospede(String nome){
+        List<String> dados = carregarDados(); 
+        
+        for (String linha : dados) {
+            String[] parte = linha.split(";");
+            if (parte[0].equals(String.valueOf(nome))) {
+                return linha;
+            }
+        }
+        return null;
     }
 
 

@@ -56,8 +56,8 @@ public class Reserva extends GerenciadorArquivos {
     public void fazerReserva() {
         List<String> dados = new ArrayList<String>();
 
-        System.out.print("Digite o nome do hóspede: ");
-        dados.add(scanner.nextLine());
+        
+        dados.add(verificaHospede());
 
         
         dados.add(verificaNumeroQuarto());
@@ -130,6 +130,29 @@ public class Reserva extends GerenciadorArquivos {
         }
        
         return numeroQuarto; 
+    }
+
+    private String verificaHospede(){
+        Hospede hospedes = new Hospede("dados/hospedes.txt");
+        System.out.print("Digite o nome do hóspede: ");
+        String nomeHospedes = scanner.nextLine();
+
+        if(hospedes.buscaHospede(nomeHospedes) == null){
+            System.out.println("O hospede com o nome " + nomeHospedes + " não foi cadastrado ");
+            System.out.println(" Por favor termine o cadastro para continuar");
+            List<String> dados = new ArrayList<String>();
+
+            dados.add(nomeHospedes);
+            
+            System.out.print("Digite o CPF do hóspede: ");
+            dados.add(scanner.nextLine()); 
+        
+            dados.add(hospedes.verificaTelefone("Digite o telefone do hóspede:"));
+
+            hospedes.salvarDados(dados);
+            System.out.println("Hóspede cadastrado com sucesso!");
+        }
+        return nomeHospedes;
     }
 
    

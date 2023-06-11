@@ -1,5 +1,9 @@
 package grupo.poopousada.classesBasicas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
@@ -62,14 +66,17 @@ public class Reserva extends GerenciadorArquivos {
         
         dados.add(verificaNumeroQuarto());
 
-        System.out.print("Digite a data de início (dd-mm-aaaa): ");
-        dados.add(scanner.nextLine());
+        String data1 = validarData("Digite a data de início (dd/mm/aaaa): ",null);
+        dados.add(data1);
 
-        System.out.print("Digite a data de fim (dd-mm-aaaa): ");
-        dados.add(scanner.nextLine());
-
-        salvarDados(dados);
-        System.out.println("Reserva realizada com sucesso!");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            dados.add(validarData("Digite a data de fim (dd/mm/aaaa): ",sdf.parse(data1))); 
+            salvarDados(dados);
+            System.out.println("Reserva realizada com sucesso!");
+        } catch (ParseException e) {
+            System.out.println("Houver um erro com as datas tente novamente");
+        }
     }
 
     public void consultarReservasPorHospede() {
@@ -153,6 +160,42 @@ public class Reserva extends GerenciadorArquivos {
             System.out.println("Hóspede cadastrado com sucesso!");
         }
         return nomeHospedes;
+    }
+
+    public static String validarData(String texto,Date data1) {
+        if (data1 == null) {
+            LocalDate dataAtual = LocalDate.now();
+            data1 = Date.from(dataAtual.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        }
+
+        String dataString;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false); // Não permitir datas inválidas, como 31/02/2023
+
+        System.out.print(texto);
+        dataString = scanner.nextLine();
+
+
+        while(true){
+            try {
+                Date data = sdf.parse(dataString);
+
+                if (data.after(data1) || data.equals(data1)) {
+                    return dataString; // A data é válida e é no futuro ou hoje
+                } else {
+                    System.out.println("A data invalidade");
+                    System.out.print(texto);
+                    dataString = scanner.nextLine();
+                    continue;
+                }
+            } catch (ParseException e) {
+                System.out.println("Formato da data invalido");
+                System.out.print(texto);
+                dataString = scanner.nextLine();
+                continue; 
+            }
+        }
+        
     }
 
    

@@ -3,8 +3,22 @@
 
   Em resumo, o sistema de gerenciamento de pousada em Java é uma solução eficiente para gerenciar o negócio de pousadas. Com suas funcionalidades, o programa permite que os proprietários de pousadas gerenciem suas operações de forma eficiente e organizada, enquanto mantém as informações dos hóspedes e reservas sempre atualizadas.
 
+## Descrição da Parte 2
 
-### Autores :busts_in_silhouette:
+Na segunda parte, foram realizados todos os tratamentos de erro para as informações passadas pelos usuários. Agora, se você tentar fazer uma reserva em um quarto que não existe, não será mais possível. Além disso, ao fazer uma reserva com um hóspede que não foi cadastrado, será solicitado que você faça o cadastro primeiro. As datas também são verificadas, sendo possível fazer reserva apenas para o mesmo dia ou para datas futuras.
+
+### Backlog 
+
+ |Funcionalidade | Responsável|
+ | ------------- | ------------ |
+ |Tratamento de erros | Julyanderson |
+ |Sistema de fachada | julyanderson |
+ |Correção da mau uso da herança| Nataniel |
+ |Implementação da interface| Nataniel |
+ |Uso do polimofismo | Nataniel |
+
+
+## Autores :busts_in_silhouette:
 :bust_in_silhouette: __Julyanderson Alves Cavalcanti de lima__
 * ansderson84001@gmail.com
 * [Github](https://github.com/ansderson122)

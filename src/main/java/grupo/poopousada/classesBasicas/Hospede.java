@@ -9,17 +9,18 @@ import java.util.*;
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
 
-public class Hospede extends GerenciadorArquivos {
+public class Hospede{
     private static Scanner scanner = new Scanner(System.in);
+    public GerenciadorArquivos gerenciadorArquivos; 
     // Construtor da classe Hospede
     public Hospede(String nomeArquivo) {
-        super(nomeArquivo);
+        gerenciadorArquivos = new GerenciadorArquivos(nomeArquivo);
     }
 
     
     public void listarDados() {
         // Carrega os dados já existentes do arquivo
-        List<String> dados = carregarDados();
+        List<String> dados = gerenciadorArquivos.carregarDados();
         // Imprime os dados na tela
         for (String linha : dados) {
             String[] campos = linha.split(";");
@@ -40,7 +41,7 @@ public class Hospede extends GerenciadorArquivos {
     }
 
     public String buscaHospede(String nome){
-        List<String> dados = carregarDados(); 
+        List<String> dados = gerenciadorArquivos.carregarDados(); 
         
         for (String linha : dados) {
             String[] parte = linha.split(";");
@@ -65,7 +66,11 @@ public class Hospede extends GerenciadorArquivos {
         
         dados.add(verificaTelefone("Digite o telefone do hóspede:"));
 
-        salvarDados(dados);
+        gerenciadorArquivos.salvarDados(dados);
         System.out.println("Hóspede cadastrado com sucesso!");
+    }
+
+    public List<String> getDadas(){
+        return gerenciadorArquivos.carregarDados();
     }
 }

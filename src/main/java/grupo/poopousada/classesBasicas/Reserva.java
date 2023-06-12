@@ -8,19 +8,20 @@ import java.util.*;
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
 
-public class Reserva extends GerenciadorArquivos {
+public class Reserva{
     private static Scanner scanner = new Scanner(System.in);
+    public GerenciadorArquivos gerenciadorArquivos;
 
     // Construtor da classe Reserva
     public Reserva(String nomeArquivo) {
-        super(nomeArquivo);
+        gerenciadorArquivos = new GerenciadorArquivos(nomeArquivo);
     }
 
     // Método para obter todas as reservas de um determinado hóspede
     
     public List<String> obterReservasPorHospede(String nomeHospede) {
         List<String> reservasHospede = new ArrayList<>();
-        List<String> dados = carregarDados();
+        List<String> dados = gerenciadorArquivos.carregarDados();
         // Itera sobre as linhas do arquivo e adiciona à lista as reservas do hóspede especificado
         for (String linha : dados) {
             String[] campos = linha.split(";");
@@ -35,7 +36,7 @@ public class Reserva extends GerenciadorArquivos {
     // Método para obter todas as reservas de um determinado quarto
     public List<String> obterReservasPorQuarto(int numQuarto) {
         List<String> reservasQuarto = new ArrayList<>();
-        List<String> dados = carregarDados();
+        List<String> dados = gerenciadorArquivos.carregarDados();
         // Itera sobre as linhas do arquivo e adiciona à lista as reservas do quarto especificado
         for (String linha : dados) {
             String[] campos = linha.split(";");
@@ -48,7 +49,7 @@ public class Reserva extends GerenciadorArquivos {
 
     public void listarDados() {
         // Carrega os dados já existentes do arquivo
-        List<String> dados = carregarDados();
+        List<String> dados = gerenciadorArquivos.carregarDados();
         // Imprime os dados na tela
         for (String linha : dados) {
             String[] campos = linha.split(";");
@@ -72,7 +73,7 @@ public class Reserva extends GerenciadorArquivos {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             dados.add(validarData("Digite a data de fim (dd/mm/aaaa): ",sdf.parse(data1))); 
-            salvarDados(dados);
+            gerenciadorArquivos.salvarDados(dados);
             System.out.println("Reserva realizada com sucesso!");
         } catch (ParseException e) {
             System.out.println("Houver um erro com as datas tente novamente");
@@ -156,7 +157,7 @@ public class Reserva extends GerenciadorArquivos {
         
             dados.add(hospedes.verificaTelefone("Digite o telefone do hóspede:"));
 
-            hospedes.salvarDados(dados);
+            hospedes.gerenciadorArquivos.salvarDados(dados);
             System.out.println("Hóspede cadastrado com sucesso!");
         }
         return nomeHospedes;

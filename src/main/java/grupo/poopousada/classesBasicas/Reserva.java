@@ -13,8 +13,8 @@ public class Reserva{
     public GerenciadorArquivos gerenciadorArquivos;
 
     // Construtor da classe Reserva
-    public Reserva(String nomeArquivo) {
-        gerenciadorArquivos = new GerenciadorArquivos(nomeArquivo);
+    public Reserva() {
+        gerenciadorArquivos = new GerenciadorArquivos("dados/reservas.txt");
     }
 
     // Método para obter todas as reservas de um determinado hóspede
@@ -134,7 +134,7 @@ public class Reserva{
 
     
     private String verificaNumeroQuarto(){
-        Quarto quartos = new Quarto("dados/quartos.txt");
+        Quarto quartos = new Quarto();
         String numeroQuarto;
         System.out.print("Digite o número do quarto: ");
         numeroQuarto = scanner.nextLine();

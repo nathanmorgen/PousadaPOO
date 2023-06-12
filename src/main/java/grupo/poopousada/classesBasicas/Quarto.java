@@ -10,8 +10,8 @@ public class Quarto{
     private static Scanner scanner = new Scanner(System.in);
     public GerenciadorArquivos gerenciadorArquivos;
 
-    public Quarto(String nomeArquivo) {
-        gerenciadorArquivos = new GerenciadorArquivos(nomeArquivo);
+    public Quarto() {
+        gerenciadorArquivos = new GerenciadorArquivos("dados/quartos.txt");
     }
 
 

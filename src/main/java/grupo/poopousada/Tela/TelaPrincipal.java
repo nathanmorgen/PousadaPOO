@@ -2,12 +2,25 @@ package grupo.poopousada.Tela;
 import java.util.Scanner;
 
 import grupo.poopousada.Fachada.Fachada;
+import grupo.poopousada.classesBasicas.Hospede;
+import grupo.poopousada.classesBasicas.Quarto;
+import grupo.poopousada.classesBasicas.Reserva;
+
 
 
 public class TelaPrincipal {
-    private static Fachada fachada = new Fachada(); 
+    private static Fachada fachada; 
     private static Scanner scanner = new Scanner(System.in);
     private static int opcao = 0;
+
+    public TelaPrincipal(){
+        Reserva reserva = new Reserva();
+        Quarto quarto = new Quarto();
+        Hospede hospede = new Hospede();
+
+        fachada = new Fachada(hospede, quarto, reserva);
+
+    }
 
     public static void main(String[] args) {
         do {
@@ -54,10 +67,10 @@ public class TelaPrincipal {
         opcao = scanner.nextInt();
         switch (opcao) {
             case 1:
-                fachada.hospede.cadastrarHospede();
+                fachada.getHospede().cadastrarHospede();
                 break;
             case 2:
-                fachada.hospede.listarDados();
+                fachada.getHospede().listarDados();
                 break;
             case 3:
                 System.out.println("Voltar para menu principal");
@@ -82,10 +95,10 @@ public class TelaPrincipal {
         opcao = scanner.nextInt();
         switch (opcao) {
             case 1:
-                fachada.quarto.cadastrarQuarto();
+                fachada.getQuarto().cadastrarQuarto();
                 break;
             case 2:
-                fachada.quarto.listarDados();
+                fachada.getQuarto().listarDados();
                 break;
             case 3:
                 System.out.println("Você tem certeza que quer excluir um quarto? (s/n)");
@@ -93,7 +106,7 @@ public class TelaPrincipal {
                 if(tex.equals("s")){
                     System.out.println("Digite o numero do quarto a ser excluido");
                     int numero = scanner.nextInt();
-                    fachada.quarto.excluirQuarto(numero);
+                    fachada.getQuarto().excluirQuarto(numero);
                 }
                 break;
             case 4:
@@ -121,16 +134,16 @@ public class TelaPrincipal {
         opcao = scanner.nextInt();
         switch (opcao) {
             case 1:
-                fachada.reserva.fazerReserva();
+                fachada.getReserva().fazerReserva();
                 break;
             case 2:
-                fachada.reserva.consultarReservasPorHospede();
+                fachada.getReserva().consultarReservasPorHospede();
                 break;
             case 3:
-                fachada.reserva.consultarReservasPorQuarto();
+                fachada.getReserva().consultarReservasPorQuarto();
                 break;
             case 4:
-               fachada.reserva.listarDados();
+               fachada.getReserva().listarDados();
                 break;
             case 5:
                 System.out.println("Voltar para menu principal");

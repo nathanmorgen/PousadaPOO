@@ -7,6 +7,8 @@
 
 Na segunda parte, foram realizados todos os tratamentos de erro para as informações passadas pelos usuários. Agora, se você tentar fazer uma reserva em um quarto que não existe, não será mais possível. Além disso, ao fazer uma reserva com um hóspede que não foi cadastrado, será solicitado que você faça o cadastro primeiro. As datas também são verificadas, sendo possível fazer reserva apenas para o mesmo dia ou para datas futuras.
 
+Foram também implementados modelos de classe para criar um padrão para todas as classes básicas, contendo os métodos cadastrar e listarDados. Além disso, foi criada a classe HospedeEstudante, que fornece um desconto de 50% no valor.
+
 ### Backlog 
 
  |Funcionalidade | Responsável|
@@ -17,6 +19,8 @@ Na segunda parte, foram realizados todos os tratamentos de erro para as informa�
  |Implementação da interface| Nataniel |
  |Uso do polimofismo | Nataniel |
 
+### Arquitetura do sistema
+![Imagem Arquitetura](img/Arquitetura%20do%20projetoPOO(1).png)
 
 ## Autores :busts_in_silhouette:
 :bust_in_silhouette: __Julyanderson Alves Cavalcanti de lima__

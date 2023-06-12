@@ -67,7 +67,7 @@ public class TelaPrincipal {
         opcao = scanner.nextInt();
         switch (opcao) {
             case 1:
-                fachada.getHospede().cadastrarHospede();
+                fachada.getHospede().cadastrar();
                 break;
             case 2:
                 fachada.getHospede().listarDados();
@@ -95,7 +95,7 @@ public class TelaPrincipal {
         opcao = scanner.nextInt();
         switch (opcao) {
             case 1:
-                fachada.getQuarto().cadastrarQuarto();
+                fachada.getQuarto().cadastrar();
                 break;
             case 2:
                 fachada.getQuarto().listarDados();
@@ -134,7 +134,7 @@ public class TelaPrincipal {
         opcao = scanner.nextInt();
         switch (opcao) {
             case 1:
-                fachada.getReserva().fazerReserva();
+                fachada.getReserva().cadastrar();
                 break;
             case 2:
                 fachada.getReserva().consultarReservasPorHospede();

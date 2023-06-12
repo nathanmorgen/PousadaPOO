@@ -7,8 +7,9 @@ import java.time.ZoneId;
 import java.util.*;
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
+import grupo.poopousada.repositorio.ModeloClasse;
 
-public class Reserva{
+public class Reserva implements ModeloClasse{
     private static Scanner scanner = new Scanner(System.in);
     public GerenciadorArquivos gerenciadorArquivos;
 
@@ -47,6 +48,7 @@ public class Reserva{
         return reservasQuarto;
     }
 
+    @Override
     public void listarDados() {
         // Carrega os dados já existentes do arquivo
         List<String> dados = gerenciadorArquivos.carregarDados();
@@ -57,8 +59,8 @@ public class Reserva{
         }
     }
 
-    
-    public void fazerReserva() {
+    @Override
+    public void cadastrar() {
         List<String> dados = new ArrayList<String>();
         System.out.print("O hospede é um estudante (s/n) : ");
         String isEstudante = scanner.nextLine();

@@ -8,8 +8,9 @@ package grupo.poopousada.classesBasicas;
 import java.util.*;
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
+import grupo.poopousada.repositorio.ModeloClasse;
 
-public class Hospede{
+public class Hospede implements ModeloClasse{
     private static Scanner scanner = new Scanner(System.in);
     public GerenciadorArquivos gerenciadorArquivos; 
     // Construtor da classe Hospede
@@ -18,6 +19,7 @@ public class Hospede{
     }
 
     
+    @Override
     public void listarDados() {
         // Carrega os dados já existentes do arquivo
         List<String> dados = gerenciadorArquivos.carregarDados();
@@ -53,8 +55,8 @@ public class Hospede{
     }
 
 
-   
-    public void cadastrarHospede() {
+    @Override
+    public void cadastrar() {
         List<String> dados = new ArrayList<String>();
 
         System.out.print("Digite o nome do hóspede: ");

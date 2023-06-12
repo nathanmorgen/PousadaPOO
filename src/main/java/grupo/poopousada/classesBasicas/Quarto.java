@@ -5,8 +5,9 @@ import java.util.*;
 
 
 import grupo.poopousada.repositorio.GerenciadorArquivos;
+import grupo.poopousada.repositorio.ModeloClasse;
 
-public class Quarto{
+public class Quarto implements ModeloClasse{
     private static Scanner scanner = new Scanner(System.in);
     public GerenciadorArquivos gerenciadorArquivos;
 
@@ -70,6 +71,7 @@ public class Quarto{
     }
 
     // Método para listar todos os quartos
+    @Override
     public void listarDados() {
         // Carrega os dados já existentes do arquivo
         List<String> dados = gerenciadorArquivos.carregarDados();
@@ -130,8 +132,8 @@ public class Quarto{
     }
 
    
-
-    public void cadastrarQuarto() {
+    @Override
+    public void cadastrar() {
         List<String> dados = new ArrayList<String>();
 
         dados.add(verificaNumeroQuarto());

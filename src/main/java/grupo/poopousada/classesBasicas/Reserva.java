@@ -60,12 +60,19 @@ public class Reserva{
     
     public void fazerReserva() {
         List<String> dados = new ArrayList<String>();
+        System.out.print("O hospede é um estudante (s/n) : ");
+        String isEstudante = scanner.nextLine();
 
-        
+        while(!isEstudante.equals("s") && !isEstudante.equals("n") ){
+            System.out.println("Apenas 's' ou 'n'");
+            System.out.print("O hospede é um estudante (s/n) : ");
+            isEstudante = scanner.nextLine();
+        }
+
         dados.add(verificaHospede());
 
-        
-        dados.add(verificaNumeroQuarto());
+        String numeruQuarto = verificaNumeroQuarto();
+        dados.add(numeruQuarto);
 
         String data1 = validarData("Digite a data de início (dd/mm/aaaa): ",null);
         dados.add(data1);
@@ -73,7 +80,21 @@ public class Reserva{
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             dados.add(validarData("Digite a data de fim (dd/mm/aaaa): ",sdf.parse(data1))); 
+            
+            String valor ;
+
+            if (isEstudante.equals("s")){
+                HospedeEstudante estudante = new HospedeEstudante();
+                valor = estudante.valorCobrado(numeruQuarto);
+                dados.add(valor);
+            }else{
+                Hospede hospede = new Hospede();
+                valor = hospede.valorCobrado(numeruQuarto);
+                dados.add(valor);
+            }
             gerenciadorArquivos.salvarDados(dados);
+
+            System.out.println("O valor foi R$ " + valor);
             System.out.println("Reserva realizada com sucesso!");
         } catch (ParseException e) {
             System.out.println("Houver um erro com as datas tente novamente");
@@ -141,7 +162,7 @@ public class Reserva{
     }
 
     private String verificaHospede(){
-        Hospede hospedes = new Hospede("dados/hospedes.txt");
+        Hospede hospedes = new Hospede();
         System.out.print("Digite o nome do hóspede: ");
         String nomeHospedes = scanner.nextLine();
 

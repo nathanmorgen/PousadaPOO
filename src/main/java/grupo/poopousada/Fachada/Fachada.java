@@ -11,7 +11,7 @@ public class Fachada {
     public Reserva reserva;
 
     public Fachada(){
-        hospede = new Hospede("dados/hospedes.txt");
+        hospede = new Hospede();
         quarto = new Quarto("dados/quartos.txt");
         reserva = new Reserva("dados/reservas.txt");
     }

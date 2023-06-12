@@ -13,8 +13,8 @@ public class Hospede{
     private static Scanner scanner = new Scanner(System.in);
     public GerenciadorArquivos gerenciadorArquivos; 
     // Construtor da classe Hospede
-    public Hospede(String nomeArquivo) {
-        gerenciadorArquivos = new GerenciadorArquivos(nomeArquivo);
+    public Hospede() {
+        gerenciadorArquivos = new GerenciadorArquivos("dados/hospedes.txt");
     }
 
     
@@ -70,7 +70,18 @@ public class Hospede{
         System.out.println("Hóspede cadastrado com sucesso!");
     }
 
-    public List<String> getDadas(){
-        return gerenciadorArquivos.carregarDados();
+    public String valorCobrado(String numeroQuarto){
+        GerenciadorArquivos dadosQuartos = new GerenciadorArquivos("dados/quartos.txt");
+        List<String> quartos = dadosQuartos.carregarDados();
+
+         for (String quarto : quartos) {
+            String[] campos = quarto.split(";");
+            if (campos[0].equals(numeroQuarto)) {
+                return campos[2];
+            }
+        }
+        return null;
     }
+
+     
 }
